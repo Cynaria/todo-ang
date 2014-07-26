@@ -1,0 +1,56 @@
+<html lang="en" ng-app="todosApp">
+	<head>
+		<link rel="stylesheet" href="stylesheets/application.css" media="screen">
+		<link rel="stylesheet" href="stylesheets/normalize.css" media="screen">
+		<link href='http://fonts.googleapis.com/css?family=Flamenco:300,400' rel='stylesheet' type='text/css'>
+		<script src="https://use.edgefonts.net/poller-one.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="javascripts/underscore.js"></script>
+		<script src="javascripts/application.js"></script>
+		<script src="javascripts/controllers.js"></script>
+	</head>
+	<body ng-controller="todoListCtrl">
+		<div class="container">
+			<div class="list center">
+				<h1>Your To-Do list For <span class="emphasis block">{{date | date : 'longDate'}}</span></h1>
+				
+				<h2 class="center">
+					You have
+					<span class="emphasis block">{{returnListLength()}} </span>
+					things to do today
+				</h2>
+			</div>
+
+			<div class="list info">
+				<ul class="todo-list">
+					<li ng-repeat="todo in list" class="item done-{{todo.done}}" >
+						<span class="done">
+							<input type="checkbox" id="todo-{{todo.id}}" ng-model="todo.done" ng-change="returnListLength()" ng-model-instant>
+							<label for="todo-{{todo.id}}"></label>
+						</span>
+						<span>{{todo.item}}</span>
+					</li>
+				</ul>
+			</div>
+
+			<div class="list">
+				<div class="ctrl">
+					<label for="input-box" class="no-show">Add Item</label>
+					<input id="input-box" class="input-box" type="text" placeholder="I need to..." ng-model="newTodoText" ng-model-instant />
+				</div>
+				<div>
+					<button class="ctrl btn" ng-click="addNewTodo()">
+						Add Item
+					</button>
+				</div>
+				<div >
+					<button class="ctrl btn" ng-click="clearFinishedItems()">Clear Finished Items</button>
+				</div>
+				<div>
+					<button class="ctrl btn" ng-click="clearList()">Clear List</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

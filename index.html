@@ -13,11 +13,15 @@
 	<body ng-controller="todoListCtrl">
 		<div class="container">
 			<div class="list center">
-				<h1>Your To-Do list For <span class="emphasis block">{{date | date : 'longDate'}}</span></h1>
-				
-				<h2 class="center">
+
+				<h1>Your To-Do list For </h1>
+				<span class="emphasis block">{{date | date : 'longDate'}}</span>
+
+				<h2>
 					You have
+				</h2>
 					<span class="emphasis block">{{returnListLength()}} </span>
+				<h2>
 					things to do today
 				</h2>
 			</div>
